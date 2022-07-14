@@ -5,9 +5,10 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = ({facts}: any) => {
-  console.log(facts)
   return (
-    <h1 className={styles.card}>{facts.fact}</h1>
+    <>
+      <h1 className={styles.card}>Site is under maintenance</h1>
+    </>
   )
 }
 
