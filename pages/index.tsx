@@ -1,13 +1,45 @@
+import { useState } from 'react';
 import type { NextPage } from 'next'
-import { loadCats } from '../lib/fetch-cats'
-import Head from 'next/head'
+import { getEntry } from '../lib/fetch-content'
+import background from '../public/panorama-2.webp';
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const Home: NextPage = ({facts}: any) => {
+type MainPageContentType = {
+  heading: string;
+  email: string;
+  phone: string;
+  address: string;
+  preheading: string;
+}
+
+const Home: NextPage<MainPageContentType,{}> = ({heading, email, phone, address, preheading}) => {
   return (
     <>
-      <h1 className={styles.card}>Site is under maintenance</h1>
+      <Image 
+        alt="main image"
+        placeholder='blur'
+        quality={100}
+        priority
+        className={styles.img} 
+        fill
+        unoptimized
+        src={background} />
+      <div className={styles.wrapper} >
+        <h1 className={styles.preHeading} data-text={preheading}>{preheading}</h1>
+        <h2 className={styles.heading} data-text={heading}>{heading}</h2>
+        <div className={styles.infoBlock}>
+          <p data-text={address}>
+            <a href={'https://yandex.com/maps/-/CCUCQThu9A'} rel="noopener noreferrer" target="_blank">
+              {address}
+            </a>
+          </p>
+          <p data-text={phone}>{phone}</p>
+          <p data-text={email}>
+            {email}
+          </p>
+        </div>
+      </div>
     </>
   )
 }
@@ -15,10 +47,10 @@ const Home: NextPage = ({facts}: any) => {
 export default Home
 
 export async function getStaticProps() {
-  const facts = await loadCats();
+  const entries = await getEntry();
   return {
     props: {
-      facts
+      ...(entries as MainPageContentType)
     }, // will be passed to the page component as props
   }
 }

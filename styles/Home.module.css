@@ -1,4 +1,126 @@
 .card {
-  color: palevioletred;
+  color: greenyellow;
   text-align: center;
+}
+
+.wrapper {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  padding: 1vh;
+}
+
+.preHeading {
+  text-align: center;
+  opacity: 0.9;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.heading {
+  margin-top: 0;
+  text-align: center;
+  font-size: 5em;
+  font-family: 'Dancing Script', serif;
+  font-weight: 100;
+}
+
+.infoBlock {
+  font-size: 2em;
+  text-align: right;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  gap: 2vh;
+}
+
+.infoBlock p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .infoBlock {
+    font-size: 1.5em;
+  }
+}
+
+.infoBlock p a:hover {
+  opacity: 0.8;
+}
+
+.img {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  object-fit: cover;
+  animation-duration: 55s;
+  animation-name: camera;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+  filter: saturate(120%) contrast(110%);
+}
+
+@keyframes camera {
+  0% {
+    object-position: 0;
+  }
+
+  10% {
+    object-position: 20%;
+  }
+
+  20% {
+    object-position: 40%;
+  }
+
+  25% {
+    object-position: 50%;
+  }
+
+  30% {
+    object-position: 60%;
+  }
+
+  40% {
+    object-position: 80%;
+  }
+
+  50% {
+    object-position: 100%;
+  }
+
+  60% {
+    object-position: 80%;
+  }
+
+  70% {
+    object-position: 60%;
+  }
+
+  75% {
+    object-position: 50%;
+  }
+
+  80% {
+    object-position: 40%;
+  }
+
+  90% {
+    object-position: 20%;
+  }
+
+  100% {
+    object-position: 0;
+  }
 }
